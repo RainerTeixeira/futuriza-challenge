@@ -55,7 +55,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">1. Adicione o Script</h3>
               <div className="bg-gray-100 p-4 rounded-lg">
                 <code className="text-sm">
-                  &lt;script src="https://futuriza-challenge.vercel.app/magic-banner.js"&gt;&lt;/script&gt;
+                  &lt;script src=&quot;https://futuriza-challenge.vercel.app/magic-banner.js&quot;&gt;&lt;/script&gt;
                 </code>
               </div>
             </div>
