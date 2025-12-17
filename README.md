@@ -2,7 +2,10 @@
 
 > Plugin completo para criação e gerenciamento de banners dinâmicos com agendamento, analytics e script embutível.
 
-[![CI](https://github.com/seu-usuario/futuriza-challenge/workflows/CI/badge.svg)](https://github.com/RainerTeixeira/futuriza-challenge/actions)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Demo:** [https://futuriza-challenge.vercel.app](https://futuriza-challenge.vercel.app)  
