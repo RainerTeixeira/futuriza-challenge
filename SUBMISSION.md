@@ -7,14 +7,13 @@
 
 ## URLs para Submissão
 
-Preencha após deploy:
-
 ```
-Repositório GitHub: https://github.com/seu-usuario/magic-banner
-App em Produção: https://seu-app.vercel.app
-Painel Admin: https://seu-app.vercel.app/admin
-API Endpoint: https://seu-app.vercel.app/api/banners
-Script Embed: https://seu-app.vercel.app/magic-banner.js
+Repositório GitHub: https://github.com/RainerTeixeira/futuriza-challenge
+App em Produção: https://futuriza-challenge.vercel.app
+Painel Admin: https://futuriza-challenge.vercel.app/admin
+API Endpoint: https://futuriza-challenge.vercel.app/api/banners
+Script Embed: https://futuriza-challenge.vercel.app/magic-banner.js
+Health Check: https://futuriza-challenge.vercel.app/api/health
 ```
 
 ## Credenciais de Teste
