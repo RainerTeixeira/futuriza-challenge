@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { bannerService } from '@/services/bannerService'
 import { BannerPreview } from '@/components/BannerPreview'
@@ -36,13 +36,19 @@ export default function NewBannerPage() {
       }
 
       const { publicUrl } = await res.json()
+      console.log('Image uploaded:', publicUrl)
       setImageUrl(publicUrl)
     } catch (error) {
+      console.error('Upload error:', error)
       alert('Erro ao fazer upload da imagem')
     } finally {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    console.log('Preview imageUrl:', imageUrl)
+  }, [imageUrl])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

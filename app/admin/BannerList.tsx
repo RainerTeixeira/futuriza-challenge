@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import type { Banner } from '@/lib/types'
 import { bannerService } from '@/services/bannerService'
 
 export function BannerList({ banners: initialBanners }: { banners: Banner[] }) {
   const [banners, setBanners] = useState(initialBanners)
+  const router = useRouter()
 
   const handleToggleActive = async (id: string, currentActive: boolean) => {
     try {
@@ -19,10 +21,14 @@ export function BannerList({ banners: initialBanners }: { banners: Banner[] }) {
   const handleDelete = async (id: string) => {
     if (!confirm('Deseja realmente excluir este banner?')) return
     try {
+      console.log('Deletando banner:', id)
       await bannerService.delete(id)
       setBanners(banners.filter(b => b.id !== id))
+      router.refresh()
+      alert('Banner excluído com sucesso!')
     } catch (error) {
-      alert('Erro ao excluir banner')
+      console.error('Erro ao excluir banner:', error)
+      alert(`Erro ao excluir banner: ${error instanceof Error ? error.message : 'Erro desconhecido'}`)
     }
   }
 

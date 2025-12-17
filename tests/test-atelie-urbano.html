@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Banners - Ateliê Urbano</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .test-section h3 { margin-top: 0; color: #333; }
+        .url-display { background: #f8f9fa; padding: 10px; border-radius: 4px; font-family: monospace; margin: 10px 0; font-size: 12px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        .status { margin: 10px 0; padding: 10px; border-radius: 4px; font-size: 14px; }
+        .status.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .status.info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Teste Banners - Ateliê Urbano</h1>
+        
+        <div class="test-section">
+            <h3>🏠 Home - Frete Grátis</h3>
+            <div class="url-display">https://rainerteixeira.github.io/atelie-urbano/</div>
+            <button onclick="testBanner('https://rainerteixeira.github.io/atelie-urbano/', 'home-result')">Testar</button>
+            <button onclick="loadScript('https://rainerteixeira.github.io/atelie-urbano/')">Carregar Script</button>
+            <div id="home-result" class="status info">Clique em "Testar"</div>
+        </div>
+
+        <div class="test-section">
+            <h3>👕 Camisa - 10% OFF</h3>
+            <div class="url-display">https://rainerteixeira.github.io/atelie-urbano/camisa.html</div>
+            <button onclick="testBanner('https://rainerteixeira.github.io/atelie-urbano/camisa.html', 'camisa-result')">Testar</button>
+            <button onclick="loadScript('https://rainerteixeira.github.io/atelie-urbano/camisa.html')">Carregar Script</button>
+            <div id="camisa-result" class="status info">Clique em "Testar"</div>
+        </div>
+
+        <div class="test-section">
+            <h3>👚 Blusa - 15% OFF</h3>
+            <div class="url-display">https://rainerteixeira.github.io/atelie-urbano/blusa.html</div>
+            <button onclick="testBanner('https://rainerteixeira.github.io/atelie-urbano/blusa.html', 'blusa-result')">Testar</button>
+            <button onclick="loadScript('https://rainerteixeira.github.io/atelie-urbano/blusa.html')">Carregar Script</button>
+            <div id="blusa-result" class="status info">Clique em "Testar"</div>
+        </div>
+
+        <div class="test-section">
+            <h3>🩳 Shorts - PIX 10%</h3>
+            <div class="url-display">https://rainerteixeira.github.io/atelie-urbano/shorts.html</div>
+            <button onclick="testBanner('https://rainerteixeira.github.io/atelie-urbano/shorts.html', 'shorts-result')">Testar</button>
+            <button onclick="loadScript('https://rainerteixeira.github.io/atelie-urbano/shorts.html')">Carregar Script</button>
+            <div id="shorts-result" class="status info">Clique em "Testar"</div>
+        </div>
+
+        <div class="test-section">
+            <h3>👗 Conjunto - Look Completo</h3>
+            <div class="url-display">https://rainerteixeira.github.io/atelie-urbano/conjunto.html</div>
+            <button onclick="testBanner('https://rainerteixeira.github.io/atelie-urbano/conjunto.html', 'conjunto-result')">Testar</button>
+            <button onclick="loadScript('https://rainerteixeira.github.io/atelie-urbano/conjunto.html')">Carregar Script</button>
+            <div id="conjunto-result" class="status info">Clique em "Testar"</div>
+        </div>
+
+        <div class="test-section">
+            <h3>👗 Saia - Última Chance</h3>
+            <div class="url-display">https://rainerteixeira.github.io/atelie-urbano/saia.html</div>
+            <button onclick="testBanner('https://rainerteixeira.github.io/atelie-urbano/saia.html', 'saia-result')">Testar</button>
+            <button onclick="loadScript('https://rainerteixeira.github.io/atelie-urbano/saia.html')">Carregar Script</button>
+            <div id="saia-result" class="status info">Clique em "Testar"</div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔄 Teste Geral</h3>
+            <button onclick="testAllBanners()">Testar Todos</button>
+            <button onclick="clearResults()">Limpar</button>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000';
+
+        async function testBanner(url, resultId) {
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.className = 'status info';
+            resultDiv.textContent = 'Testando...';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/banners?url=${encodeURIComponent(url)}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const banner = await response.json();
+                
+                if (banner && banner.id) {
+                    resultDiv.className = 'status success';
+                    resultDiv.innerHTML = `
+                        ✅ <strong>Banner encontrado!</strong><br>
+                        ID: ${banner.id} | Slug: ${banner.slug}<br>
+                        ${banner.description}<br>
+                        Views: ${banner.views || 0}
+                    `;
+                } else {
+                    resultDiv.className = 'status error';
+                    resultDiv.textContent = '❌ Nenhum banner encontrado';
+                }
+            } catch (error) {
+                resultDiv.className = 'status error';
+                resultDiv.textContent = `❌ Erro: ${error.message}`;
+            }
+        }
+
+        function loadScript(url) {
+            const existingScript = document.getElementById('magic-banner-script');
+            if (existingScript) existingScript.remove();
+
+            const existingBanner = document.getElementById('magic-banner');
+            if (existingBanner) existingBanner.remove();
+
+            const script = document.createElement('script');
+            script.id = 'magic-banner-script';
+            script.src = `${API_BASE}/magic-banner.js`;
+            script.setAttribute('data-url', url);
+            script.setAttribute('data-api', API_BASE);
+            
+            document.head.appendChild(script);
+
+            setTimeout(() => {
+                const banner = document.getElementById('magic-banner');
+                if (banner) {
+                    alert('✅ Banner carregado! Veja o topo da página.');
+                } else {
+                    alert('❌ Banner não carregado. Verifique se existe um banner ativo.');
+                }
+            }, 1000);
+        }
+
+        async function testAllBanners() {
+            const urls = [
+                'https://rainerteixeira.github.io/atelie-urbano/',
+                'https://rainerteixeira.github.io/atelie-urbano/camisa.html',
+                'https://rainerteixeira.github.io/atelie-urbano/blusa.html',
+                'https://rainerteixeira.github.io/atelie-urbano/shorts.html',
+                'https://rainerteixeira.github.io/atelie-urbano/conjunto.html',
+                'https://rainerteixeira.github.io/atelie-urbano/saia.html'
+            ];
+
+            const resultIds = ['home-result', 'camisa-result', 'blusa-result', 'shorts-result', 'conjunto-result', 'saia-result'];
+
+            for (let i = 0; i < urls.length; i++) {
+                await testBanner(urls[i], resultIds[i]);
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+        }
+
+        function clearResults() {
+            const resultIds = ['home-result', 'camisa-result', 'blusa-result', 'shorts-result', 'conjunto-result', 'saia-result'];
+            resultIds.forEach(id => {
+                const div = document.getElementById(id);
+                div.className = 'status info';
+                div.textContent = 'Clique em "Testar"';
+            });
+
+            const existingBanner = document.getElementById('magic-banner');
+            if (existingBanner) existingBanner.remove();
+        }
+    </script>
+</body>
+</html>

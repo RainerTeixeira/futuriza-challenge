@@ -10,6 +10,7 @@ export async function POST(request: Request) {
   }
 
   const fileName = `${Date.now()}-${crypto.randomUUID()}-${file.name}`
+  console.log('Uploading file:', fileName)
 
   const { data, error } = await supabaseServer.storage
     .from('banners')
@@ -18,6 +19,7 @@ export async function POST(request: Request) {
     })
 
   if (error) {
+    console.error('Upload error:', error)
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
@@ -25,5 +27,6 @@ export async function POST(request: Request) {
     data: { publicUrl },
   } = supabaseServer.storage.from('banners').getPublicUrl(data.path)
 
-  return NextResponse.json({ url: publicUrl, path: data.path }, { status: 201 })
+  console.log('File uploaded successfully:', publicUrl)
+  return NextResponse.json({ publicUrl, url: publicUrl, path: data.path }, { status: 201 })
 }

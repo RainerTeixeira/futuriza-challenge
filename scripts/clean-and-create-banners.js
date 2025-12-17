@@ -26,7 +26,7 @@ const imagesPath = 'C:\\Users\\raine\\OneDrive\\Imagens\\imagem teste banner\\ba
  */
 const banners = [
   {
-    url: 'https://rainerteixeira.github.io/atelie-urbano/',
+    url: 'https://rainerteixeira.github.io/atelie-urbano/index.html',
     slug: 'home-frete-gratis-verao26',
     image: 'home-frete-gratis-verao26.svg'
   },
