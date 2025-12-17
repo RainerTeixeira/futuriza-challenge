@@ -25,5 +25,5 @@ export async function POST(request: Request) {
     data: { publicUrl },
   } = supabaseServer.storage.from('banners').getPublicUrl(data.path)
 
-  return NextResponse.json({ path: data.path, publicUrl }, { status: 201 })
+  return NextResponse.json({ url: publicUrl, path: data.path }, { status: 201 })
 }

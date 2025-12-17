@@ -1,7 +1,20 @@
+/**
+ * @fileoverview API routes for banner operations (GET, POST, DELETE)
+ * @module app/api/banners/route
+ */
+
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseServer } from '@/lib/supabaseServer'
 import type { Banner, BannerInsert } from '@/lib/types'
 
+/**
+ * Retrieves an active banner for a specific URL with time-based filtering
+ * @async
+ * @function GET
+ * @param {NextRequest} request - The incoming request object
+ * @returns {Promise<NextResponse>} JSON response with banner data or error
+ * @description Finds active banners matching the URL parameter, respects start/end times, and increments view count
+ */
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const url = searchParams.get('url')
@@ -10,8 +23,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'URL parameter is required' }, { status: 400 })
   }
 
+  /** @type {string} Current timestamp in ISO format for time-based filtering */
   const now = new Date().toISOString()
 
+  /** @type {string[]} Array of URL variations to match (handles file:// protocol case sensitivity) */
   const urlsToMatch = [url]
   const fileDriveMatch = url.match(/^file:\/\/\/([a-zA-Z]):\//)
   if (fileDriveMatch) {
@@ -39,7 +54,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
-  // Incrementar views
+  /** @type {number} Incremented view count */
   const nextViews = (data.views || 0) + 1
 
   const { data: updated, error: updateError } = await supabaseServer
@@ -56,8 +71,17 @@ export async function GET(request: NextRequest) {
   return NextResponse.json(updated)
 }
 
+/**
+ * Creates a new banner
+ * @async
+ * @function POST
+ * @param {NextRequest} request - The incoming request object with banner data
+ * @returns {Promise<NextResponse>} JSON response with created banner or error
+ * @description Validates required fields and inserts new banner into database
+ */
 export async function POST(request: NextRequest) {
   try {
+    /** @type {BannerInsert} Banner data from request body */
     const body: BannerInsert = await request.json()
 
     if (!body.url) {
@@ -80,6 +104,14 @@ export async function POST(request: NextRequest) {
   }
 }
 
+/**
+ * Deactivates a banner by setting active to false
+ * @async
+ * @function DELETE
+ * @param {NextRequest} request - The incoming request object with banner ID
+ * @returns {Promise<NextResponse>} JSON response with success message or error
+ * @description Soft deletes banner by setting active flag to false instead of permanent deletion
+ */
 export async function DELETE(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const id = searchParams.get('id')

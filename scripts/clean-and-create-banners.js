@@ -1,13 +1,29 @@
+/**
+ * @fileoverview Script to clean duplicate banners and create unique entries
+ * @module scripts/clean-and-create-banners
+ * @description Removes all existing banners and creates fresh unique entries for demo
+ */
+
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
 
+/** @type {string} Supabase project URL */
 const supabaseUrl = 'https://lvqquqbpjreqjyfkhwur.supabase.co';
+
+/** @type {string} Supabase service role key */
 const supabaseKey = 'sb_secret_b0sIFEJLsTXXY8t7kkROAg_MHZhkR9q';
+
+/** @type {import('@supabase/supabase-js').SupabaseClient} Supabase client instance */
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+/** @type {string} Path to banner images directory */
 const imagesPath = 'C:\\Users\\raine\\OneDrive\\Imagens\\imagem teste banner\\banners';
 
+/**
+ * Clean banner configuration without duplicates
+ * @type {Array<Object>} Array of unique banner objects
+ */
 const banners = [
   {
     url: 'https://rainerteixeira.github.io/atelie-urbano/',
@@ -45,10 +61,17 @@ const banners = [
   }
 ];
 
+/**
+ * Cleans all existing banners and creates fresh unique entries
+ * @async
+ * @function cleanAndCreateBanners
+ * @returns {Promise<void>}
+ * @description Removes duplicate banners from database and creates clean unique entries
+ */
 async function cleanAndCreateBanners() {
   console.log('🧹 Limpando banners existentes...');
   
-  // Deletar todos os banners
+  /** Delete all existing banners to avoid duplicates */
   const { error: deleteError } = await supabase
     .from('banners')
     .delete()
@@ -63,13 +86,17 @@ async function cleanAndCreateBanners() {
 
   for (const banner of banners) {
     try {
+      /** @type {string} Full path to banner image file */
       const imagePath = path.join(imagesPath, banner.image);
+      /** @type {Buffer} Image file buffer (not used in this version) */
       const imageBuffer = fs.readFileSync(imagePath);
       
+      /** @type {string} Public URL for the banner image */
       const { data: { publicUrl } } = supabase.storage
         .from('banners')
         .getPublicUrl(`${banner.slug}.svg`);
 
+      /** @type {Object} Banner data object for database insertion */
       const bannerData = {
         url: banner.url,
         slug: banner.slug,

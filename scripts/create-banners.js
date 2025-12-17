@@ -1,16 +1,29 @@
+/**
+ * @fileoverview Script for creating banners with image upload to Supabase Storage
+ * @module scripts/create-banners
+ * @description Uploads banner images to Supabase Storage and creates corresponding database entries
+ */
+
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
 
-// Configuração do Supabase
+/** @type {string} Supabase project URL */
 const supabaseUrl = 'https://lvqquqbpjreqjyfkhwur.supabase.co';
+
+/** @type {string} Supabase service role key for server operations */
 const supabaseKey = 'sb_secret_b0sIFEJLsTXXY8t7kkROAg_MHZhkR9q';
+
+/** @type {import('@supabase/supabase-js').SupabaseClient} Supabase client instance */
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Caminho das imagens
+/** @type {string} Local path to banner images directory */
 const imagesPath = 'C:\\Users\\raine\\OneDrive\\Imagens\\imagem teste banner\\banners';
 
-// Dados dos banners
+/**
+ * Banner configuration data for Ateliê Urbano demo
+ * @type {Array<Object>} Array of banner objects with URL, slug, image, and timing data
+ */
 const banners = [
   {
     url: 'https://rainerteixeira.github.io/atelie-urbano/',
@@ -54,13 +67,27 @@ const banners = [
   }
 ];
 
+/**
+ * Uploads banner image to Supabase Storage and creates database entry
+ * @async
+ * @function uploadImageAndCreateBanner
+ * @param {Object} banner - Banner configuration object
+ * @param {string} banner.url - Target URL for the banner
+ * @param {string} banner.slug - URL-friendly banner identifier
+ * @param {string} banner.image - Local image filename
+ * @param {boolean} banner.active - Whether banner is active
+ * @param {string} [banner.start_time] - ISO string for banner start time
+ * @param {string} [banner.end_time] - ISO string for banner end time
+ * @returns {Promise<void>}
+ * @description Reads local image file, uploads to Supabase Storage, and creates database record
+ */
 async function uploadImageAndCreateBanner(banner) {
   try {
-    // Ler arquivo da imagem
+    /** @type {string} Full path to the local image file */
     const imagePath = path.join(imagesPath, banner.image);
+    /** @type {Buffer} Image file buffer for upload */
     const imageBuffer = fs.readFileSync(imagePath);
     
-    // Upload da imagem para Supabase Storage
     const { data: uploadData, error: uploadError } = await supabase.storage
       .from('banners')
       .upload(`${banner.slug}.svg`, imageBuffer, {
@@ -73,12 +100,12 @@ async function uploadImageAndCreateBanner(banner) {
       return;
     }
 
-    // Obter URL pública da imagem
+    /** @type {string} Public URL for the uploaded image */
     const { data: { publicUrl } } = supabase.storage
       .from('banners')
       .getPublicUrl(`${banner.slug}.svg`);
 
-    // Preparar dados do banner
+    /** @type {Object} Banner data object for database insertion */
     const bannerData = {
       url: banner.url,
       slug: banner.slug,
@@ -89,7 +116,6 @@ async function uploadImageAndCreateBanner(banner) {
       views: 0
     };
 
-    // Inserir banner no banco
     const { data: insertData, error: insertError } = await supabase
       .from('banners')
       .insert(bannerData)
@@ -113,6 +139,13 @@ async function uploadImageAndCreateBanner(banner) {
   }
 }
 
+/**
+ * Main function to create all banners sequentially
+ * @async
+ * @function createAllBanners
+ * @returns {Promise<void>}
+ * @description Iterates through banner configuration array and creates each banner
+ */
 async function createAllBanners() {
   console.log('🚀 Iniciando criação dos banners...\n');
   
