@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '@/lib/supabaseClient'
 import { bannerService } from '@/services/bannerService'
 import { BannerPreview } from '@/components/BannerPreview'
 
@@ -24,17 +23,19 @@ export default function NewBannerPage() {
 
     setLoading(true)
     try {
-      const fileName = `${Date.now()}-${file.name}`
-      const { data, error } = await supabase.storage
-        .from('banners')
-        .upload(fileName, file)
+      const payload = new FormData()
+      payload.append('file', file)
 
-      if (error) throw error
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: payload,
+      })
 
-      const { data: { publicUrl } } = supabase.storage
-        .from('banners')
-        .getPublicUrl(data.path)
+      if (!res.ok) {
+        throw new Error('Upload failed')
+      }
 
+      const { publicUrl } = await res.json()
       setImageUrl(publicUrl)
     } catch (error) {
       alert('Erro ao fazer upload da imagem')
