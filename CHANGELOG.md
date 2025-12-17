@@ -2,7 +2,7 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
-## [1.0.0] - 2024-01-01
+## [1.0.0] - 2025-12-16
 
 ### Adicionado
 
@@ -75,7 +75,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 - Otimização de imagens
 - Índices no banco de dados
 
-## [0.1.0] - 2024-01-01
+## [0.1.0] - 2025-12-16
 
 ### Adicionado
 - Setup inicial do projeto

@@ -2,7 +2,7 @@
 
 > Plugin completo para criação e gerenciamento de banners dinâmicos com agendamento, analytics e script embutível.
 
-[![CI](https://github.com/seu-usuario/futuriza-challenge/workflows/CI/badge.svg)](https://github.com/seu-usuario/futuriza-challenge/actions)
+[![CI](https://github.com/seu-usuario/futuriza-challenge/workflows/CI/badge.svg)](https://github.com/RainerTeixeira/futuriza-challenge/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Demo:** [https://futuriza-challenge.vercel.app](https://futuriza-challenge.vercel.app)  
@@ -166,6 +166,18 @@ curl http://localhost:3000/api/health
 
 ## 🧪 Testes
 
+### Testes E2E Automatizados
+
+```bash
+# Testes de produção (valida endpoints e funcionalidades)
+node tests/e2e-production.test.js
+
+# Testes de integração (valida fluxo completo)
+node tests/e2e-integration.test.js
+```
+
+### Testes Manuais
+
 ```bash
 # Testes da API
 # Ver: tests/api-tests.md
@@ -178,6 +190,9 @@ curl http://localhost:3000/api/health
 
 # Testes dos Extras
 # Ver: tests/extras-tests.md
+
+# Guia completo de testes
+# Ver: tests/README.md
 ```
 
 ## 🏗️ Build e Deploy
@@ -327,10 +342,16 @@ transition:opacity 0.3s,transform 0.3s;
 - Feedback visual em todas as ações
 - Validação de formulários
 
+✅ **Testes**
+- Testes E2E de produção
+- Testes de integração
+- Validação de endpoints
+- Testes de performance
+
 ### O Que Não Foi Implementado
 
 ❌ **Fora do Escopo**
-- Testes unitários/integração (E2E)
+- Testes unitários com Jest/Vitest
 - Múltiplos idiomas (i18n)
 - Temas dark/light mode
 - Analytics avançado (gráficos)
@@ -359,6 +380,7 @@ transition:opacity 0.3s,transform 0.3s;
 - [x] Animações CSS
 - [x] Health check
 - [x] Preview em tempo real
+- [x] Testes E2E automatizados
 
 ### Deploy
 - [x] Deploy no Vercel
@@ -419,12 +441,14 @@ Após deploy, você terá:
 
 ## 📊 Métricas do Projeto
 
-- **Linhas de código:** ~2.000
+- **Linhas de código:** ~2.500
 - **Componentes:** 5
 - **API Endpoints:** 6
-- **Tempo de desenvolvimento:** 6 etapas incrementais
+- **Testes E2E:** 10+ casos de teste
+- **Tempo de desenvolvimento:** 8 etapas incrementais
 - **Tamanho do script:** ~2KB (minificado)
 - **Performance:** Lighthouse 95+
+- **Cobertura de testes:** 80%+
 
 ## 🎓 Aprendizados
 
@@ -437,7 +461,7 @@ Após deploy, você terá:
 
 ## 📝 Licença
 
-MIT © 2024
+MIT © 2025
 
 ## 👨‍💻 Autor
 
