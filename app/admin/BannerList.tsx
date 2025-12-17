@@ -1,10 +1,22 @@
 'use client'
 
+/**
+ * @fileoverview Banner list component for the admin dashboard
+ * @module app/admin/BannerList
+ */
+
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Banner } from '@/lib/types'
 import { bannerService } from '@/services/bannerService'
 
+/**
+ * Displays a list of banners with options to toggle active status and delete
+ * @component
+ * @param {Object} props - Component props
+ * @param {Banner[]} props.banners - Array of banner objects to display
+ * @returns {JSX.Element} The rendered banner list component
+ */
 export function BannerList({ banners: initialBanners }: { banners: Banner[] }) {
   const [banners, setBanners] = useState(initialBanners)
   const router = useRouter()

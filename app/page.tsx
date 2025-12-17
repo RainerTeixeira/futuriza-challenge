@@ -1,5 +1,16 @@
+/**
+ * @fileoverview Main landing page for the Magic Banner Plugin
+ * @module app/page
+ */
+
 import Link from 'next/link';
 
+/**
+ * Home page component
+ * @function Home
+ * @returns {JSX.Element} The main landing page with feature highlights and usage instructions
+ * @description Renders the main landing page with sections for features, usage instructions, and a call-to-action
+ */
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">

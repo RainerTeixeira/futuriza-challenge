@@ -1,9 +1,19 @@
 'use client'
 
+/**
+ * @fileoverview Login page for the admin dashboard
+ * @module app/admin/login/page
+ */
+
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
+/**
+ * Login page component that handles admin authentication
+ * @component
+ * @returns {JSX.Element} The login form component
+ */
 export default function LoginPage() {
   const router = useRouter()
   const supabase = createClientComponentClient()
@@ -13,6 +23,12 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  /**
+   * Handles the login form submission
+   * @async
+   * @param {React.FormEvent} e - The form event
+   * @returns {Promise<void>}
+   */
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)

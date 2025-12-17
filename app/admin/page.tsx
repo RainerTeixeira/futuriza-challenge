@@ -1,10 +1,22 @@
+/**
+ * @fileoverview Admin dashboard page for managing banners
+ * @module app/admin/page
+ */
+
 import { supabaseServer } from '@/lib/supabaseServer'
 import Link from 'next/link'
 import { BannerList } from './BannerList'
 
+// Force dynamic rendering and disable cache for this page
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
+/**
+ * Admin dashboard page component
+ * @async
+ * @function AdminPage
+ * @returns {Promise<JSX.Element>} The admin dashboard page
+ */
 export default async function AdminPage() {
   console.log('Iniciando carregamento dos banners...')
   

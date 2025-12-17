@@ -1,10 +1,20 @@
 'use client'
 
+/**
+ * @fileoverview Page for creating a new banner
+ * @module app/admin/new/page
+ */
+
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { bannerService } from '@/services/bannerService'
 import { BannerPreview } from '@/components/BannerPreview'
 
+/**
+ * New banner creation page component
+ * @component
+ * @returns {JSX.Element} The new banner creation form
+ */
 export default function NewBannerPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -17,6 +27,12 @@ export default function NewBannerPage() {
     active: true,
   })
 
+  /**
+   * Handles image upload to the server
+   * @async
+   * @param {React.ChangeEvent<HTMLInputElement>} e - The file input change event
+   * @returns {Promise<void>}
+   */
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -50,6 +66,12 @@ export default function NewBannerPage() {
     console.log('Preview imageUrl:', imageUrl)
   }, [imageUrl])
 
+  /**
+   * Handles form submission for creating a new banner
+   * @async
+   * @param {React.FormEvent} e - The form submission event
+   * @returns {Promise<void>}
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.url) {

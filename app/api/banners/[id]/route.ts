@@ -1,8 +1,22 @@
+/**
+ * @fileoverview API routes for individual banner operations (GET, PATCH, DELETE)
+ * @module app/api/banners/[id]/route
+ */
+
 import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { supabaseServer } from '@/lib/supabaseServer'
 import type { BannerUpdate } from '@/lib/types'
 
+/**
+ * Retrieves a specific banner by ID
+ * @async
+ * @function GET
+ * @param {NextRequest} request - The incoming request object
+ * @param {Object} context - The route context
+ * @param {Promise<{id: string}>} context.params - Route parameters containing the banner ID
+ * @returns {Promise<NextResponse>} The banner data or an error response
+ */
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -24,6 +38,15 @@ export async function GET(
   return NextResponse.json(data)
 }
 
+/**
+ * Updates a specific banner by ID
+ * @async
+ * @function PATCH
+ * @param {NextRequest} request - The incoming request object containing update data
+ * @param {Object} context - The route context
+ * @param {Promise<{id: string}>} context.params - Route parameters containing the banner ID
+ * @returns {Promise<NextResponse>} The updated banner data or an error response
+ */
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -49,6 +72,15 @@ export async function PATCH(
   }
 }
 
+/**
+ * Deletes a specific banner by ID
+ * @async
+ * @function DELETE
+ * @param {NextRequest} request - The incoming request object
+ * @param {Object} context - The route context
+ * @param {Promise<{id: string}>} context.params - Route parameters containing the banner ID
+ * @returns {Promise<NextResponse>} Success message or error response
+ */
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
