@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <linearGradient id="magicGradient16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="8" cy="8" r="7.5" fill="#1e293b" stroke="url(#magicGradient16)" stroke-width="1"/>
+  
+  <!-- Magic wand -->
+  <rect x="7" y="4" width="2" height="8" rx="0.5" fill="url(#magicGradient16)" transform="rotate(45 8 8)"/>
+  
+  <!-- Sparkles -->
+  <circle cx="4" cy="4" r="0.8" fill="#fbbf24" opacity="0.9"/>
+  <circle cx="12" cy="4" r="0.5" fill="#60a5fa" opacity="0.8"/>
+  <circle cx="12" cy="12" r="0.8" fill="#a78bfa" opacity="0.9"/>
+  <circle cx="4" cy="12" r="0.5" fill="#f472b6" opacity="0.7"/>
+  
+  <!-- Banner shape -->
+  <path d="M3 9 L3 11 Q3 12 4 12 L12 12 Q13 12 13 11 L13 9 Z" fill="url(#magicGradient16)" opacity="0.8"/>
+</svg>

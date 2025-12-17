@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="magicGradient48" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="24" cy="24" r="22" fill="#1e293b" stroke="url(#magicGradient48)" stroke-width="3"/>
+  
+  <!-- Magic wand -->
+  <rect x="20" y="12" width="6" height="24" rx="1.5" fill="url(#magicGradient48)" transform="rotate(45 24 24)"/>
+  
+  <!-- Sparkles -->
+  <circle cx="12" cy="12" r="2" fill="#fbbf24" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="36" cy="12" r="1.5" fill="#60a5fa" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="36" cy="36" r="2" fill="#a78bfa" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.4;0.9" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="12" cy="36" r="1.5" fill="#f472b6" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Banner shape -->
+  <path d="M9 27 L9 33 Q9 36 12 36 L36 36 Q39 36 39 33 L39 27 Z" fill="url(#magicGradient48)" opacity="0.8"/>
+  <text x="24" y="32" font-family="Arial, sans-serif" font-size="5" font-weight="bold" fill="white" text-anchor="middle">M</text>
+</svg>
