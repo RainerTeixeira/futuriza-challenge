@@ -8,6 +8,13 @@
 **Demo:** [https://futuriza-challenge.vercel.app](https://futuriza-challenge.vercel.app)  
 **Admin:** [https://futuriza-challenge.vercel.app/admin](https://futuriza-challenge.vercel.app/admin)
 
+## 🎬 Demonstração
+
+<div align="center">
+  <img src="./public/presentation.gif" alt="Magic Banner Plugin em ação" width="800">
+  <p><em>Sistema completo: criação de banner, preview em tempo real e exibição no site</em></p>
+</div>
+
 ---
 
 ## 🚀 Stack
