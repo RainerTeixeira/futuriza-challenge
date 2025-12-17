@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var API_URL = 'http://localhost:3000';
+  var API_URL = 'https://futuriza-challenge.vercel.app';
   var BANNER_ID = 'magic-banner-container';
   var CLOSED_KEY = 'magic-banner-closed';
 

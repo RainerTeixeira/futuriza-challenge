@@ -5,8 +5,8 @@
 [![CI](https://github.com/seu-usuario/futuriza-challenge/workflows/CI/badge.svg)](https://github.com/seu-usuario/futuriza-challenge/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Demo:** [https://seu-app.vercel.app](https://seu-app.vercel.app)  
-**Admin:** [https://seu-app.vercel.app/admin](https://seu-app.vercel.app/admin)
+**Demo:** [https://futuriza-challenge.vercel.app](https://futuriza-challenge.vercel.app)  
+**Admin:** [https://futuriza-challenge.vercel.app/admin](https://futuriza-challenge.vercel.app/admin)
 
 ---
 
@@ -117,15 +117,15 @@ Adicione ao seu site:
 
 **Produção:**
 ```html
-<script src="https://seu-app.vercel.app/magic-banner.js"></script>
+<script src="https://futuriza-challenge.vercel.app/magic-banner.js"></script>
 ```
 
 **Com opções:**
 ```html
 <script 
-  src="https://seu-app.vercel.app/magic-banner.js"
+  src="https://futuriza-challenge.vercel.app/magic-banner.js"
   data-url="https://meusite.com/produto/123"
-  data-api="https://seu-app.vercel.app"
+  data-api="https://futuriza-challenge.vercel.app"
   data-target="body">
 </script>
 ```
@@ -393,7 +393,7 @@ git push origin main
 NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=sua-anon-key
 SUPABASE_SERVICE_ROLE_KEY=sua-service-role-key
-NEXT_PUBLIC_APP_URL=https://seu-app.vercel.app
+NEXT_PUBLIC_APP_URL=https://futuriza-challenge.vercel.app
 ```
 
 4. **Deploy**
@@ -404,17 +404,17 @@ NEXT_PUBLIC_APP_URL=https://seu-app.vercel.app
 
 Após deploy, você terá:
 
-- **App Principal:** `https://seu-app.vercel.app`
-- **Painel Admin:** `https://seu-app.vercel.app/admin`
-- **API Banners:** `https://seu-app.vercel.app/api/banners`
-- **Health Check:** `https://seu-app.vercel.app/api/health`
-- **Script Embed:** `https://seu-app.vercel.app/magic-banner.js`
+- **App Principal:** `https://futuriza-challenge.vercel.app`
+- **Painel Admin:** `https://futuriza-challenge.vercel.app/admin`
+- **API Banners:** `https://futuriza-challenge.vercel.app/api/banners`
+- **Health Check:** `https://futuriza-challenge.vercel.app/api/health`
+- **Script Embed:** `https://futuriza-challenge.vercel.app/magic-banner.js`
 
 ### Snippet Final para Clientes
 
 ```html
 <!-- Adicione este código em qualquer site -->
-<script src="https://seu-app.vercel.app/magic-banner.js"></script>
+<script src="https://futuriza-challenge.vercel.app/magic-banner.js"></script>
 ```
 
 ## 📊 Métricas do Projeto
