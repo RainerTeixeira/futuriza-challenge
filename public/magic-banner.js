@@ -57,7 +57,7 @@
 
     var container = document.createElement('div');
     container.id = BANNER_ID;
-    container.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s;';
+    container.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.15);opacity:0;transform:translateY(-100%);transition:opacity 0.3s,transform 0.3s;';
 
     var closeBtn = document.createElement('button');
     closeBtn.innerHTML = '&times;';
@@ -103,6 +103,7 @@
 
     setTimeout(function() {
       container.style.opacity = '1';
+      container.style.transform = 'translateY(0)';
     }, 10);
 
     var bodyPadding = parseInt(window.getComputedStyle(document.body).paddingTop) || 0;

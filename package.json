@@ -11,6 +11,7 @@
     "minify": "terser public/magic-banner.js -o public/magic-banner.min.js -c -m --comments false"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/supabase-js": "^2.39.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
