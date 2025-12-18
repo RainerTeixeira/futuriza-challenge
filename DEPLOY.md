@@ -1,11 +1,15 @@
 # 🚀 Guia de Deploy - Magic Banner Plugin
 
+**Versão:** 1.0.1  
+**Última atualização:** 17/01/2025
+
 ## Pré-requisitos
 
 - [ ] Conta no [GitHub](https://github.com)
 - [ ] Conta no [Vercel](https://vercel.com)
 - [ ] Conta no [Supabase](https://supabase.com)
-- [ ] Projeto Supabase configurado
+- [ ] Node.js 18+ instalado
+- [ ] Git instalado
 
 ## Passo 1: Preparar Supabase
 
@@ -53,14 +57,14 @@
 git init
 
 # Adicionar remote
-git remote add origin https://github.com/seu-usuario/magic-banner.git
+git remote add origin https://github.com/seu-usuario/futuriza-challenge.git
 
 # Commit inicial
 git add .
-git commit -m "chore: finalize README and docs for submission"
+git commit -m "feat: initial commit - Magic Banner Plugin v1.0.1"
 
 # Push
-git push -u origin main
+git push -u origin master
 ```
 
 ### 2.2 Configurar Secrets (para CI)
@@ -78,29 +82,29 @@ git push -u origin main
 1. Acesse [vercel.com](https://vercel.com)
 2. Clique em "Add New Project"
 3. Import Git Repository
-4. Selecione seu repositório `magic-banner`
+4. Selecione seu repositório `futuriza-challenge`
 5. Clique em "Import"
 
 ### 3.2 Configurar Variáveis de Ambiente
 
 Na tela de configuração, adicione:
 
-```
+```env
 NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=sua-anon-key-aqui
 SUPABASE_SERVICE_ROLE_KEY=sua-service-role-key-aqui
-NEXT_PUBLIC_APP_URL=https://seu-app.vercel.app
+NEXT_PUBLIC_APP_URL=https://futuriza-challenge.vercel.app
 ```
 
-**Importante:** Deixe `NEXT_PUBLIC_APP_URL` vazio por enquanto.
+**Importante:** Use a URL final do Vercel em `NEXT_PUBLIC_APP_URL`.
 
 ### 3.3 Deploy
 
 1. Clique em "Deploy"
 2. Aguarde build (~2-3 minutos)
-3. Após deploy, copie a URL gerada (ex: `https://magic-banner-xyz.vercel.app`)
+3. Após deploy, copie a URL gerada
 
-### 3.4 Atualizar NEXT_PUBLIC_APP_URL
+### 3.4 Atualizar NEXT_PUBLIC_APP_URL (se necessário)
 
 1. Vá em **Settings > Environment Variables**
 2. Edite `NEXT_PUBLIC_APP_URL`
@@ -116,14 +120,14 @@ NEXT_PUBLIC_APP_URL=https://seu-app.vercel.app
 
 ```bash
 # Health check
-curl https://seu-app.vercel.app/api/health
+curl https://futuriza-challenge.vercel.app/api/health
 
 # Deve retornar: {"ok":true,"time":"...","service":"magic-banner-api"}
 ```
 
 ### 4.2 Testar Admin
 
-1. Acesse `https://seu-app.vercel.app/admin`
+1. Acesse `https://futuriza-challenge.vercel.app/admin/login`
 2. Faça login com:
    - Email: `admin@example.com`
    - Senha: `admin123456`
@@ -135,13 +139,14 @@ Crie arquivo `test.html`:
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
   <title>Teste Magic Banner</title>
 </head>
 <body>
   <h1>Teste de Integração</h1>
-  <script src="https://seu-app.vercel.app/magic-banner.js"></script>
+  <script src="https://futuriza-challenge.vercel.app/magic-banner.js"></script>
 </body>
 </html>
 ```
@@ -163,9 +168,9 @@ No Supabase:
 2. **Email Auth**
 3. Desmarque "Enable email confirmations"
 
-### 5.3 Configurar CORS (se necessário)
+### 5.3 Configurar CORS (já configurado)
 
-Já está configurado em `next.config.js`, mas se precisar ajustar:
+Já está configurado em `next.config.js`:
 
 ```js
 async headers() {
@@ -185,13 +190,22 @@ async headers() {
 ### Build falha no Vercel
 
 **Erro:** `Module not found`
-- Verifique `package.json`
-- Execute `npm install` localmente
-- Commit e push novamente
+
+**Solução:**
+```bash
+# Limpar node_modules e reinstalar
+rm -rf node_modules package-lock.json
+npm install
+git add .
+git commit -m "fix: update dependencies"
+git push
+```
 
 ### API retorna 500
 
 **Erro:** `Invalid Supabase credentials`
+
+**Solução:**
 - Verifique variáveis de ambiente no Vercel
 - Confirme que `SUPABASE_SERVICE_ROLE_KEY` está correta
 - Redeploy após corrigir
@@ -199,38 +213,54 @@ async headers() {
 ### Script não carrega
 
 **Erro:** `CORS policy`
+
+**Solução:**
 - Verifique `next.config.js`
 - Confirme que headers CORS estão configurados
-- Limpe cache do navegador
+- Limpe cache do navegador (Ctrl+Shift+R)
 
 ### Login não funciona
 
 **Erro:** `Invalid login credentials`
+
+**Solução:**
 - Verifique se usuário foi criado no Supabase
-- Confirme que email foi confirmado
-- Tente resetar senha
+- Confirme que email foi confirmado (Auto Confirm User)
+- Tente resetar senha no Supabase Dashboard
+
+### Imagens não aparecem
+
+**Erro:** `Failed to load image`
+
+**Solução:**
+- Verifique políticas de Storage no Supabase
+- Execute `db/storage.sql` novamente
+- Confirme que bucket `banner-images` é público
 
 ## URLs Finais para Submissão
 
 Após deploy completo, você terá:
 
 ✅ **Repositório GitHub:**  
-`https://github.com/seu-usuario/magic-banner`
+`https://github.com/RainerTeixeira/futuriza-challenge`
 
 ✅ **App em Produção:**  
-`https://seu-app.vercel.app`
+`https://futuriza-challenge.vercel.app`
 
 ✅ **Painel Admin:**  
-`https://seu-app.vercel.app/admin`
+`https://futuriza-challenge.vercel.app/admin/login`
 
 ✅ **API Endpoint:**  
-`https://seu-app.vercel.app/api/banners`
+`https://futuriza-challenge.vercel.app/api/banners`
 
 ✅ **Script Embed:**  
-`https://seu-app.vercel.app/magic-banner.js`
+`https://futuriza-challenge.vercel.app/magic-banner.js`
 
 ✅ **Health Check:**  
-`https://seu-app.vercel.app/api/health`
+`https://futuriza-challenge.vercel.app/api/health`
+
+✅ **Site de Teste:**  
+`https://rainerteixeira.github.io/atelie-urbano/`
 
 ## Checklist Final
 
@@ -245,7 +275,14 @@ Após deploy completo, você terá:
 - [ ] Banner pode ser criado
 - [ ] Script embed funciona
 - [ ] CI/CD rodando
+- [ ] Testes E2E passando
 
 ## 🎉 Pronto para Submissão!
 
 Seu projeto está pronto para ser submetido no formulário Futuriza.
+
+**Versão:** 1.0.1  
+**Status:** ✅ Produção  
+**Deploy:** Vercel  
+**Database:** Supabase  
+**CI/CD:** GitHub Actions
