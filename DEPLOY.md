@@ -1,7 +1,8 @@
 # 🚀 Guia de Deploy - Magic Banner Plugin
 
 **Versão:** 1.0.1  
-**Última atualização:** 17/01/2025
+**Última atualização:** 17/12/2025  
+**Desenvolvimento:** 16-17/12/2025
 
 ## Pré-requisitos
 

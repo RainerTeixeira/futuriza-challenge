@@ -5,7 +5,7 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
-## [1.0.1] - 2025-01-17
+## [1.0.1] - 2025-12-17
 
 ### 📝 Documentação
 
@@ -25,7 +25,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 - Corrigidas informações de contato
 - Ajustadas métricas do projeto (2.5k LOC, 7 endpoints)
 
-## [1.0.0] - 2025-01-17
+## [1.0.0] - 2025-12-17
 
 ### 🎉 Release Inicial - Magic Banner Plugin
 
@@ -168,7 +168,25 @@ Primeira versão completa do plugin de banners dinâmicos com todas as funcional
 - Dashboard de métricas
 - Exportação de relatórios
 
+## [0.0.1] - 2025-12-16
+
+### 🎬 Início do Projeto
+
+Primeiro commit e setup inicial do projeto.
+
+### ✨ Adicionado
+
+- Setup Next.js 14 com App Router
+- Configuração TypeScript
+- Tailwind CSS + shadcn/ui
+- Cliente Supabase
+- Estrutura básica de pastas
+- Configuração ESLint e Prettier
+- Arquivo .env.example
+- README inicial
+
 ---
 
 [1.0.1]: https://github.com/RainerTeixeira/futuriza-challenge/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/RainerTeixeira/futuriza-challenge/releases/tag/v1.0.0
+[1.0.0]: https://github.com/RainerTeixeira/futuriza-challenge/compare/v0.0.1...v1.0.0
+[0.0.1]: https://github.com/RainerTeixeira/futuriza-challenge/releases/tag/v0.0.1
