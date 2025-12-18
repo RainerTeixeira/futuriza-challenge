@@ -190,7 +190,7 @@ Por limitação de tempo/escopo:
 ### 1. Testar Painel Admin
 
 ```
-URL: https://seu-app.vercel.app/admin
+URL: https://futuriza-challenge.vercel.app/admin
 Email: admin@example.com
 Senha: admin123456
 ```
@@ -205,10 +205,10 @@ Senha: admin123456
 
 ```bash
 # Health check
-curl https://seu-app.vercel.app/api/health
+curl https://futuriza-challenge.vercel.app/api/health
 
 # Buscar banner
-curl "https://seu-app.vercel.app/api/banners?url=https://exemplo.com"
+curl "https://futuriza-challenge.vercel.app/api/banners?url=https://exemplo.com"
 ```
 
 ### 3. Testar Script Embed
@@ -221,7 +221,7 @@ Criar arquivo HTML:
 <head><title>Teste</title></head>
 <body>
   <h1>Teste Magic Banner</h1>
-  <script src="https://seu-app.vercel.app/magic-banner.js"></script>
+  <script src="https://futuriza-challenge.vercel.app/magic-banner.js"></script>
 </body>
 </html>
 ```
@@ -243,10 +243,10 @@ Abrir no navegador e verificar banner.
 
 ## Contato
 
-**Nome:** Seu Nome  
-**Email:** seu@email.com  
-**GitHub:** github.com/seu-usuario  
-**LinkedIn:** linkedin.com/in/seu-perfil
+**Nome:** Rainer Teixeira  
+**Email:** raineroliveira94@hotmail.com.com  
+**GitHub:** github.com/RainerTeixeira  
+**LinkedIn:** linkedin.com/in/rainerteixeira
 
 ## Observações Finais
 
